@@ -1,0 +1,48 @@
+[
+    {
+        "payload": {
+            "CommonBlock": {
+                "M0": {
+                    "GSPGroupID": "_X",
+                    "MPANCore": "1900012374324",
+                    "distributorDIPID": "2500000002"
+                },
+                "S0": {
+                    "eventCode": "[MSAppSPResponse]",
+                    "interfaceID": "IF-034",
+                    "schemaVersion": "010"
+                },
+                "S1": {
+                    "DIPConnectionProviderID": "1234567890",
+                    "environmentTag": "SIT",
+                    "senderCorrelationID": "CI-20231002-0x0000000000008CBF",
+                    "senderDIPID": "1200000015",
+                    "senderRoleID": "MSS",
+                    "senderTimestamp": "2024-03-12T15:22:18+00:00",
+                    "senderUniqueReference": "S-IF-034-1200000015-MSS-20240312-874680c2bdb343c8af0c63971f56972a",
+                    "subText": null
+                }
+            },
+            "CustomBlock": {
+                "B007": {
+                    "proposedAppointmentResponseCode": "SP000 - Proposed Appointment ACCEPTED",
+                    "responseCode": "A"
+                },
+                "B012": {
+                    "serviceProviderAppointmentRequestingSupplierDIPID": "2300000012",
+                    "serviceProviderAppointmentRequestingSupplierMPID": "MRCY"
+                },
+                "B013": {
+                    "CSSRegistrationID": "20000003-8404-1000-0000-000016607551"
+                },
+                "B070": {
+                    "appointmentScenario": "CSP",
+                    "contractReferenceMeteringService": "OESLMRCYSM",
+                    "proposedMeteringServiceDIPEffectiveFromDate": "2024-02-13T00:00:00+00:00",
+                    "proposedMeteringServiceDIPID": "1200000015",
+                    "proposedMeteringServiceMPID": "OESL"
+                }
+            }
+        }
+    }
+]
