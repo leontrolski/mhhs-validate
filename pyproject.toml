@@ -1,6 +1,6 @@
 [project]
 name = "mhhs-validate"
-version = "0.0.1"
+version = "0.0.2"
 description = "MHHS validator"
 readme = "README.md"
 requires-python = ">=3.7"
@@ -17,7 +17,7 @@ classifiers = [
 ]
 
 dependencies = [
-  "jsonschema==4.*",
+  "openapi-schema-validator==0.6.*",
   "requests==2.*",
 ]
 

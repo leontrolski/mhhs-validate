@@ -4,8 +4,8 @@ from pathlib import Path
 import sys
 from typing import Any
 
-import jsonschema
-import jsonschema.protocols
+from openapi_schema_validator import validate as openapi_validate
+from openapi_schema_validator import OAS30Validator
 import requests
 from referencing import Registry, Resource
 
@@ -54,23 +54,16 @@ def validate() -> None:
         "$id": "urn:mhhs-validate",
         "$defs": defs,
     }
-
     registry = Resource.from_contents(resource) @ Registry()
-    print(f"Validating {interface_name} message")
-    validator = jsonschema.Draft202012Validator(defs[interface_name], registry=registry)
-    validator.validate(payload)
-    print(data_path_str, "appears valid")
+    print(f"Validating {interface_name} message: {data_path_str}")
+    openapi_validate(payload, defs[interface_name], cls=OAS30Validator, registry=registry)
+    print("Valid!")
 
 
 def _replace_references(o: Any) -> Any:
     if isinstance(o, list):
         return [_replace_references(n) for n in o]
     if isinstance(o, dict):
-        # `nullable` is an OpenAPI thing, to conform to JSONSchema
-        # we replace `type: T` with `type: [T, null]`
-        # There may be other inconsistencies!
-        if o.get("nullable") is True:
-            o["type"] = [o["type"], "null"]
         return {k: _replace_references(v) for k, v in o.items()}
     if isinstance(o, str) and "#/components/schemas/" in o:
         l, r = o.split("#/components/schemas/")
